@@ -81,11 +81,10 @@ if choice == 'A':
 
 
 
-def pyramid(columns, rows, symbol, pattern2)
+def pyramid(columns, rows, symbol, pattern2):
    
     # full pyramid 
     if pattern2 == 1:
-        for x in range 
 
 
 
@@ -96,6 +95,8 @@ def pyramid(columns, rows, symbol, pattern2)
 
     # hollow inverted full pryamid 
     elif pattern2 == 3:
+
+pass
 
 
 def halfpyramid(columns, rows, symbol, pattern2)
@@ -111,6 +112,7 @@ def halfpyramid(columns, rows, symbol, pattern2)
     # hollow inverted hollow pyramid
     elif pattern2 == 3:
 
+pass
 
 
 # if choice is pyramid
