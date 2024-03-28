@@ -36,7 +36,7 @@ def rectangle(rows, columns, symbol, pattern):
     if pattern == 1:
         for x in range(rows):  
             for y in range(columns): 
-                if x == 0 or x == rows-1 or y == 0 or y == col-1:
+                if x == 0 or x == rows-1 or y == 0 or y == columns-1:
                     print(symbol + " ", end='')
                 else: 
                     print(' ' + ' ', end='')
@@ -85,17 +85,17 @@ def pyramid(columns, rows, symbol, pattern2):
    
     # full pyramid 
     if pattern2 == 1:
-        break
+        exit()
 
 
 
     # inverted full pryamid
     elif pattern2 == 2:
-        break
+        exit()
 
     # hollow inverted full pryamid 
     elif pattern2 == 3:
-        break
+        exit()
 
 
 
@@ -103,15 +103,15 @@ def halfpyramid(columns, rows, symbol, pattern2):
 
     # half pyramid
     if pattern2 == 1:
-        break
+        exit()
 
     # inverted half pyramid 
     elif pattern2 == 2:
-        break
+        exit()
 
     # hollow inverted hollow pyramid
     elif pattern2 == 3:
-        break
+        exit()
 
 
 
