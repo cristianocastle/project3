@@ -85,38 +85,38 @@ def pyramid(columns, rows, symbol, pattern2):
    
     # full pyramid 
     if pattern2 == 1:
-
+        break
 
 
 
     # inverted full pryamid
     elif pattern2 == 2:
-
+        break
 
     # hollow inverted full pryamid 
     elif pattern2 == 3:
+        break
 
-pass
 
 
-def halfpyramid(columns, rows, symbol, pattern2)
+def halfpyramid(columns, rows, symbol, pattern2):
 
     # half pyramid
     if pattern2 == 1:
-
+        break
 
     # inverted half pyramid 
     elif pattern2 == 2:
-
+        break
 
     # hollow inverted hollow pyramid
     elif pattern2 == 3:
+        break
 
-pass
 
 
 # if choice is pyramid
-if choice == 'B'
+if choice == 'B':
     print(' ')
     columns = int(input('Enter amount of columns: '))
     rows = int(input('Enter amount of rows: '))
