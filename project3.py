@@ -1,7 +1,9 @@
 
 
+
 # define function for main menu
 def main():
+    print()
     print('Welcome to the Pattern Print Shop. Please select from the following options:')
     print('A - To print a Rectangle Pattern')
     print('B - To print a Pyramid Pattern')
@@ -17,19 +19,35 @@ def main():
             return choice
             break
         else:
-            print("Enter a valid input A, B, C, or Q to quit")
+            print("Enter a valid input: A, B, C, or Q to quit")
+    
+    enter_choice()
+    
+
+    
 
 
-# call function to get choice
-choice = main()
+def enter_choice(choice):
+    choice == main()
+    if choice == 'A':
+        choice_rectangle()
+    elif choice == 'B': 
+        choice_pyramid()
+    elif choice == 'C':
+        choice_diamond()
+    elif choice == 'Q':
+        choice_exit()
+
+
+
 
 
 # terminate program if user quits
-if choice == 'Q': 
+def choice_exit():
     exit()
 
 
-# define function for rectangle shapes 
+# define function to print rectangle shapes 
 def rectangle(rows, columns, symbol, pattern):
 
     #hollow rectangle
@@ -37,9 +55,9 @@ def rectangle(rows, columns, symbol, pattern):
         for x in range(rows):  
             for y in range(columns): 
                 if x == 0 or x == rows-1 or y == 0 or y == columns-1:
-                    print(symbol + " ", end='')
+                    print(symbol + ' ', end='')
                 else: 
-                    print(' ' + ' ', end='')
+                    print(' ' , end='')
             print()
 
         
@@ -49,11 +67,12 @@ def rectangle(rows, columns, symbol, pattern):
             for y in range(columns):
                 print(symbol + ' ', end=' ')
             print()
+    
+    main()
 
 
-
-# if choice is rectangle
-if choice == 'A':
+# if choice is rectangle calls rectangle function to print shape
+def choice_rectangle():
     print(' ')
     columns = int(input('Enter amount of columns: '))
     rows = int(input('Enter amount of rows: '))
@@ -67,7 +86,7 @@ if choice == 'A':
     # validate if choice is valid
     while (True):
         pattern = int(input('Enter your choice: '))
-        if pattern in range(3):
+        if pattern in range(4):
             break
         else:
             print("Enter a valid input 0-2")
@@ -80,52 +99,104 @@ if choice == 'A':
         main()
 
 
-
-def pyramid(columns, rows, symbol, pattern2):
+# function to print pyramid shapes
+def pyramid(height, symbol, pattern2):
    
     # full pyramid 
     if pattern2 == 1:
-        exit()
+        for i in range(height):
+            for j in range(i, height):
+                print(' ' + ' ', end = "")
+            for j in range(i):
+                print(symbol + ' ', end = "")
+            for j in range(i + 1):
+                print(symbol + ' ', end = "")
+            print()
 
+        print()
 
 
     # inverted full pryamid
     elif pattern2 == 2:
-        exit()
+        for i in range(height):
+            for j in range(i + 1):
+                print(' ', end = "")
+            for j in range(i, height - 1):
+                print(symbol, end = "")
+            for j in range(i, height):
+                print(symbol, end = "")
+            print()
+
+        print()
+
 
     # hollow inverted full pryamid 
     elif pattern2 == 3:
-        exit()
+        for i in range(height):
+            for j in range(i +1):
+                print(' ' + ' ', end = "")
+            for k in range(2 * (height -i) - 1):
+                if k == 0 or k == 2 * (height - i - 1) or i == 0:
+                    print(symbol + ' ', end = "")
+                else:
+                    print(' ' + ' ', end = "")
+            print()
+
+        print()
+    
+    main()
 
 
-
-def halfpyramid(columns, rows, symbol, pattern2):
+# function to print half pyramid shapes
+def halfpyramid(height, symbol, pattern2):
 
     # half pyramid
-    if pattern2 == 1:
-        exit()
+    if pattern2 == 1: 
+        for i in range(height):
+            for j in range(i + 1):
+                print(symbol + ' ', end = "")
+            print()
 
-    # inverted half pyramid 
-    elif pattern2 == 2:
-        exit()
-
-    # hollow inverted hollow pyramid
-    elif pattern2 == 3:
-        exit()
+        print()
 
 
 
-# if choice is pyramid
-if choice == 'B':
+    # inverted half pyramid
+    if pattern2 == 2: 
+        for i in range(height):
+            for j in range(i, height):
+                print(symbol + ' ', end = "")
+            print()
+
+        print()
+
+
+
+    # half inverted hollow pyramid
+    if pattern2 == 3: 
+        for i in range(height, 0, -1):
+            if i == height:
+                print(height * symbol)
+            elif 1 < i < height:
+                print(symbol + (i - 2) * ' ' + symbol)
+            else:
+                print(symbol)
+
+        print()
+    
+    main()
+
+
+# if choice is pyramid calls pyramid function to print shape 
+def choice_pyramid():
     print(' ')
-    columns = int(input('Enter amount of columns: '))
-    rows = int(input('Enter amount of rows: '))
+    height = int(input('Enter height: '))
     symbol = input('Enter symbol: ')
     print(' ')
     print('1 - Half Pyramid')
     print('2 - Full Pyramid')
     print('0 - Return to main menu.')
-
+    print(' ')
     # validate if choice is valid
     while (True):
         pattern = int(input('Enter your choice: '))
@@ -133,6 +204,7 @@ if choice == 'B':
             break
         else:
             print("Enter a valid input 0-2")
+        print(' ')
 
     # if choice is half pyramid call halfpyramid function
     if pattern == 1:
@@ -140,15 +212,18 @@ if choice == 'B':
         print('2 - Inverted Half Pyramid')  
         print('3 - Hollow Inverted Half Pyramid') 
         print('0 - Return to main menu') 
-
+        print(' ')
         while (True):
             pattern2 = int(input('Enter your choice: '))
-            if pattern2 in range(3):
+            if pattern2 in range(4):
                 break
             else:
                 print("Enter a valid input 0-3")   
-        
-        halfpyramid(columns, rows, symbol, pattern)
+            if pattern2 == 0: 
+                main()
+
+        halfpyramid(height, symbol, pattern2)
+        print(' ')
 
     # if choice is full pyramid call full pyramid function
     elif pattern == 2: 
@@ -156,17 +231,97 @@ if choice == 'B':
         print('2 - Inverted Full Pyramid')  
         print('3 - Hollow Inverted Full Pyramid') 
         print('0 - Return to main menu') 
+        print(' ')
 
         while (True):
             pattern2 = int(input('Enter your choice: '))
-            if pattern2 in range(3):
+            if pattern2 in range(4):
                 break
             else:
                 print("Enter a valid input 0-3")   
-        
-        pyramid(columns, rows, symbol, pattern2)
+            if pattern2 == 0: 
+                main()
+        pyramid(height, symbol, pattern2)
+        print(' ')
 
     # if choice is main menu 
     elif pattern == 0:
         print(' ')
         main()
+    
+
+# function to print diamond shapes
+def diamond(height, symbol, pattern):
+
+    # solid diamond
+    if pattern == 1: 
+        for i in range(height):
+            print(' ' * (height - i - 1) + (symbol + ' ') * (i + 1))
+    # Lower half of the diamond
+        for i in range(height - 2, -1, -1):
+            print(' ' * (height - i - 1) + (symbol + ' ') * (i + 1))
+
+
+
+    # hollow diamond
+    if pattern == 2: 
+        print(' ' * (height - 1) + symbol)  
+    # Print upper half of the diamond
+        for i in range(1, height):
+            print(' ' * (height - i - 1) + symbol + ' ' * (2 * i - 1) + symbol)
+        # Print bottom half of the diamond
+        for i in range(height - 2, 0, -1):
+            print(' ' * (height - i - 1) + symbol + ' ' * (2 * i - 1) + symbol)
+        if height > 1:
+            print(' ' * (height - 1) + symbol)  # Print bottom of the diamond
+
+
+    # solid half diamond
+    if pattern == 3: 
+        
+        for i in range(height):
+            print((symbol + ' ') * (i + 1))
+
+        for i in range(height - 2, -1, -1):
+            print((symbol + ' ') * (i + 1))
+    
+    main()
+
+
+# if choice is diamond calls diamond function to print shape 
+def choice_diamond():
+
+
+
+    
+    print(' ')
+    height = int(input('Enter height: '))
+    symbol = input('Enter symbol: ')
+    print(' ')
+    print('1 - Solid Diamond')
+    print('2 - Hollow Diamond')
+    print('3 - Solid Hald Diamond')
+    print('0 - Return to main menu.')
+    print(' ')
+
+    # validate if choice is valid
+    while (True):
+        pattern = int(input('Enter your choice: '))
+        if pattern in range(4):
+            break
+        else:
+            print("Enter a valid input 0-2")
+        print(' ')
+
+    diamond(height, symbol, pattern)
+    print(' ')
+
+        # if choice is main menu 
+    if pattern == 0:
+        print(' ')
+        main() 
+
+
+while(True):
+    if __name__ == "__main__":
+        enter_choice()
