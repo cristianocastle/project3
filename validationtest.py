@@ -49,9 +49,3 @@ def test():
     print(symbol)
 
 test()
-
-
-    symbols = ['!', '@', '#', '$', '%', '^', '&', '*', "N"]
-    while symbol not in symbols:
-        symbol = input("Enter a valid symbol: ")
-    return symbol
