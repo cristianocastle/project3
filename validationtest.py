@@ -1,6 +1,6 @@
 
 
-
+# this function should only return positive integers and valid symbols
 def validate_input(input):
 
     if input == rows:
@@ -25,8 +25,8 @@ def validate_input(input):
 
 
 
-
-def shape():
+# test to see if validation function works 
+def test():
     global rows 
     global columns
     global height
@@ -48,7 +48,7 @@ def shape():
     validate_input(symbol)
     print(symbol)
 
-shape()
+test()
 
 
     symbols = ['!', '@', '#', '$', '%', '^', '&', '*', "N"]
