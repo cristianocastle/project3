@@ -16,19 +16,17 @@ def main():
     while (True):
         choice = input('Enter your choice: ')
         if choice == 'A' or choice == 'B' or choice == 'C' or choice == 'Q':
-            return choice
             break
         else:
             print("Enter a valid input: A, B, C, or Q to quit")
     
-    enter_choice()
+    user_choice(choice)
     
 
     
 
 
-def enter_choice(choice):
-    choice == main()
+def user_choice(choice):
     if choice == 'A':
         choice_rectangle()
     elif choice == 'B': 
@@ -39,11 +37,9 @@ def enter_choice(choice):
         choice_exit()
 
 
-
-
-
 # terminate program if user quits
 def choice_exit():
+    print('Thank you for your business')
     exit()
 
 
@@ -57,7 +53,7 @@ def rectangle(rows, columns, symbol, pattern):
                 if x == 0 or x == rows-1 or y == 0 or y == columns-1:
                     print(symbol + ' ', end='')
                 else: 
-                    print(' ' , end='')
+                    print(' ' + ' ' , end='')
             print()
 
         
@@ -77,6 +73,7 @@ def choice_rectangle():
     columns = int(input('Enter amount of columns: '))
     rows = int(input('Enter amount of rows: '))
     symbol = input('Enter symbol: ')
+    symbol = validate_symbol(symbol)
     print(' ')
     print('1 - Hollow Rectangle')
     print('2 - Solid Rectangle')
@@ -104,46 +101,55 @@ def pyramid(height, symbol, pattern2):
    
     # full pyramid 
     if pattern2 == 1:
-        for i in range(height):
-            for j in range(i, height):
-                print(' ' + ' ', end = "")
-            for j in range(i):
-                print(symbol + ' ', end = "")
-            for j in range(i + 1):
-                print(symbol + ' ', end = "")
+        if symbol != 'N':
+            for i in range(height):
+                for j in range(i, height):
+                    print(' ' + ' ', end = "")
+                for j in range(i):
+                    print(symbol + ' ', end = "")
+                for j in range(i + 1):
+                    print(symbol + ' ', end = "")
+                print()
             print()
+        else: 
+            # print numbers for full pyramid 
 
-        print()
 
 
     # inverted full pryamid
     elif pattern2 == 2:
-        for i in range(height):
-            for j in range(i + 1):
-                print(' ', end = "")
-            for j in range(i, height - 1):
-                print(symbol, end = "")
-            for j in range(i, height):
-                print(symbol, end = "")
+        if symbol != 'N':
+            for i in range(height):
+                for j in range(i + 1):
+                    print(' ', end = "")
+                for j in range(i, height - 1):
+                    print(symbol, end = "")
+                for j in range(i, height):
+                    print(symbol, end = "")
+                print()
             print()
+        else:
+            # print numbers for inverted full pryamid
 
-        print()
 
 
     # hollow inverted full pryamid 
     elif pattern2 == 3:
-        for i in range(height):
-            for j in range(i +1):
-                print(' ' + ' ', end = "")
-            for k in range(2 * (height -i) - 1):
-                if k == 0 or k == 2 * (height - i - 1) or i == 0:
-                    print(symbol + ' ', end = "")
-                else:
+        if symbol != 'N':
+            for i in range(height):
+                for j in range(i +1):
                     print(' ' + ' ', end = "")
+                for k in range(2 * (height -i) - 1):
+                    if k == 0 or k == 2 * (height - i - 1) or i == 0:
+                        print(symbol + ' ', end = "")
+                    else:
+                        print(' ' + ' ', end = "")
+                print()
             print()
+        else: 
+            #print numbers for hollow interted full pyramid
 
-        print()
-    
+
     main()
 
 
@@ -152,46 +158,62 @@ def halfpyramid(height, symbol, pattern2):
 
     # half pyramid
     if pattern2 == 1: 
-        for i in range(height):
-            for j in range(i + 1):
-                print(symbol + ' ', end = "")
-            print()
 
-        print()
+        if symbol != 'N':    
+            for i in range(height):
+                for j in range(i + 1):
+                        print(symbol, end = "")
+                print()
+
+        else:
+            for i in range(height):
+                for j in range(i + 1):
+                    print(j + 1, end = "")
+                print()
 
 
 
     # inverted half pyramid
     if pattern2 == 2: 
-        for i in range(height):
-            for j in range(i, height):
-                print(symbol + ' ', end = "")
+        if symbol != "N":
+            for i in range(height):
+                for j in range(i, height):
+                    print(symbol + ' ', end = "")
+                print()
             print()
-
+        else: 
+            for i in range(height, 0, -1):
+                for j in range(1, i + 1):
+                    print(j, end = "")
+                print()
         print()
+
 
 
 
     # half inverted hollow pyramid
     if pattern2 == 3: 
-        for i in range(height, 0, -1):
-            if i == height:
-                print(height * symbol)
-            elif 1 < i < height:
-                print(symbol + (i - 2) * ' ' + symbol)
-            else:
-                print(symbol)
-
-        print()
-    
+        if symbol != 'N':
+            for i in range(height, 0, -1):
+                if i == height:
+                    print(height * symbol)
+                elif 1 < i < height:
+                    print(symbol + (i - 2) * ' ' + symbol)
+                else:
+                    print(symbol)
+            print()
+        else: 
+            #print numbers for half inverted hollow pyramid
+        
     main()
 
 
-# if choice is pyramid calls pyramid function to print shape 
+# if choice is pyramid calls half or normal pyramid function to print shape 
 def choice_pyramid():
     print(' ')
     height = int(input('Enter height: '))
-    symbol = input('Enter symbol: ')
+    symbol = input('Enter symbol or "N" to use numbers: ')
+    symbol = validate_symbol (symbol)
     print(' ')
     print('1 - Half Pyramid')
     print('2 - Full Pyramid')
@@ -297,6 +319,7 @@ def choice_diamond():
     print(' ')
     height = int(input('Enter height: '))
     symbol = input('Enter symbol: ')
+    symbol = validate_symbol(symbol)
     print(' ')
     print('1 - Solid Diamond')
     print('2 - Hollow Diamond')
@@ -322,6 +345,14 @@ def choice_diamond():
         main() 
 
 
-while(True):
-    if __name__ == "__main__":
-        enter_choice()
+# validate if symbol is valid
+def validate_symbol(symbol): 
+    symbols = ['!', '@', '#', '$', '%', '^', '&', '*', "N"]
+    while symbol not in symbols:
+        print("Please enter a valid symbol from the given options.")
+        symbol = input("Select any one: (@, *, &, $, #...): ")
+    return symbol
+
+
+if __name__ == "__main__":
+    main()
