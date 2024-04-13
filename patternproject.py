@@ -1,5 +1,5 @@
 
-
+# defined global variables to avoid error in functions
 columns, rows, height, symbol = 'placeholder'
 
 
@@ -25,7 +25,7 @@ def main():
 
     user_choice(choice)
     
-
+# takes user's choice and calls pattern function 
 def user_choice(choice):
 
     if choice == 'A':
@@ -82,12 +82,14 @@ def rectangle(rows, columns, symbol, pattern):
             for y in range(columns):
                 print(symbol + ' ', end=' ')
             print()
-
+    
+    #return to main menu after printing shape
     main()
 
 
-# if choice is rectangle
+# if user choice is rectangle
 def choice_rectangle():
+    
     global rows 
     global columns
     global symbol
@@ -101,13 +103,13 @@ def choice_rectangle():
     print(' ')
     print('1 - Hollow Rectangle')
     print('2 - Solid Rectangle')
-    print('3 - Return to main menu')
+    print('0 - Return to main menu')
     print(' ')
 
-    # validate if choice is valid
+    # validate if choice is 0-2
     while (True):
         pattern = int(input('Enter your choice: '))
-        if pattern in range(4):
+        if pattern in range(3):
             break
         else:
             print("Enter a valid input 0-2")
@@ -269,8 +271,9 @@ def halfpyramid(height, symbol, pattern2):
     main()
 
 
-# if choice is pyramid 
+# if user choice is pyramid 
 def choice_pyramid():
+
     global height
     global symbol
     print(' ')
@@ -374,8 +377,9 @@ def diamond(height, symbol, pattern):
     main()
 
 
-# if choice is diamond calls diamond function to print shape 
+# if user choice is diamond 
 def choice_diamond():
+
     global height
     global symbol
     print(' ')
@@ -390,7 +394,7 @@ def choice_diamond():
     print('0 - Return to main menu.')
     print(' ')
 
-    # validate if choice is valid
+    # validate if choice is 0-3
     while (True):
         pattern = int(input('Enter your choice: '))
         if pattern in range(4):
@@ -399,6 +403,7 @@ def choice_diamond():
             print("Enter a valid input 0-2")
         print(' ')
 
+    # call function to print shape 
     diamond(height, symbol, pattern)
     print(' ')
 
