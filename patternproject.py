@@ -1,5 +1,7 @@
 
 
+columns, rows, height, symbol = 'placeholder'
+
 
 # define function for main menu
 def main():
@@ -36,9 +38,32 @@ def user_choice(choice):
         print('Thank you for your business')
         exit()
 
+# validates user input and returns only postive integers and valid symbol
+def validate(userinput):
+    
+    if userinput == rows:
+        value = rows
+    elif userinput == columns: 
+        value = columns 
+    elif userinput == height: 
+        value = height
+    elif userinput == symbol: 
+        value = symbol
+        symbols = ['!', '@', '#', '$', '%', '^', '&', '*', "N"]
+        while value not in symbols:
+            value = input("Enter a valid symbol: ")
+        return value
+    while(True):
+        try:
+            value = int(value)
+            if value <= 0:
+                raise Exception
+            return value
+        except Exception:
+            value = input("Enter a valid positive integer: ")
+
 
 # function to print rectangle shapes 
-
 def rectangle(rows, columns, symbol, pattern):
 
     #hollow rectangle
@@ -63,14 +88,16 @@ def rectangle(rows, columns, symbol, pattern):
 
 # if choice is rectangle
 def choice_rectangle():
-
+    global rows 
+    global columns
+    global symbol
     print(' ')
     columns = int(input('Enter amount of columns: '))
-    columns = validate_input(columns)
+    columns = validate(columns)
     rows = int(input('Enter amount of rows: '))
-    rows = validate_input(rows)
+    rows = validate(rows)
     symbol = input('Enter symbol: ')
-    symbol = validate_input(symbol)
+    symbol = validate(symbol)
     print(' ')
     print('1 - Hollow Rectangle')
     print('2 - Solid Rectangle')
@@ -186,7 +213,6 @@ def fullpyramid(height, symbol, pattern2):
     main()
 
 
-
 # function to print half pyramid shapes
 def halfpyramid(height, symbol, pattern2):
 
@@ -245,10 +271,13 @@ def halfpyramid(height, symbol, pattern2):
 
 # if choice is pyramid 
 def choice_pyramid():
-
+    global height
+    global symbol
     print(' ')
     height = int(input('Enter height: '))
+    height = validate(height)
     symbol = input('Enter symbol or "N" to use numbers: ')
+    symbol = validate(symbol)
     print(' ')
     print('1 - Half Pyramid')
     print('2 - Full Pyramid')
@@ -347,9 +376,13 @@ def diamond(height, symbol, pattern):
 
 # if choice is diamond calls diamond function to print shape 
 def choice_diamond():
+    global height
+    global symbol
     print(' ')
     height = int(input('Enter height: '))
+    height = validate(height)
     symbol = input('Enter symbol: ')
+    symbol = validate(symbol)
     print(' ')
     print('1 - Solid Diamond')
     print('2 - Hollow Diamond')
@@ -374,11 +407,6 @@ def choice_diamond():
         print(' ')
         main() 
 
-
-# validate if input is valid
-def validate_input(input):
-    #conditions
-    return input
 
 if __name__ == "__main__":
     main()
