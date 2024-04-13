@@ -1,6 +1,9 @@
 
 # defined global variables to avoid error in functions
-columns, rows, height, symbol = 'placeholder'
+columns = 'placeholder'
+rows = 'placeholder'
+height = 'placeholder'
+symbol = 'placeholder'
 
 
 # define function for main menu
@@ -89,7 +92,6 @@ def rectangle(rows, columns, symbol, pattern):
 
 # if user choice is rectangle
 def choice_rectangle():
-    
     global rows 
     global columns
     global symbol
@@ -273,7 +275,6 @@ def halfpyramid(height, symbol, pattern2):
 
 # if user choice is pyramid 
 def choice_pyramid():
-
     global height
     global symbol
     print(' ')
@@ -379,7 +380,7 @@ def diamond(height, symbol, pattern):
 
 # if user choice is diamond 
 def choice_diamond():
-
+    
     global height
     global symbol
     print(' ')
