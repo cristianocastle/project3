@@ -96,9 +96,9 @@ def choice_rectangle():
     global columns
     global symbol
     print(' ')
-    columns = int(input('Enter amount of columns: '))
+    columns = input('Enter amount of columns: ')
     columns = validate(columns)
-    rows = int(input('Enter amount of rows: '))
+    rows = input('Enter amount of rows: ')
     rows = validate(rows)
     symbol = input('Enter symbol: ')
     symbol = validate(symbol)
@@ -278,7 +278,7 @@ def choice_pyramid():
     global height
     global symbol
     print(' ')
-    height = int(input('Enter height: '))
+    height = input('Enter height: ')
     height = validate(height)
     symbol = input('Enter symbol or "N" to use numbers: ')
     symbol = validate(symbol)
@@ -384,14 +384,14 @@ def choice_diamond():
     global height
     global symbol
     print(' ')
-    height = int(input('Enter height: '))
+    height = input('Enter height: ')
     height = validate(height)
     symbol = input('Enter symbol: ')
     symbol = validate(symbol)
     print(' ')
     print('1 - Solid Diamond')
     print('2 - Hollow Diamond')
-    print('3 - Solid Hald Diamond')
+    print('3 - Solid Half Diamond')
     print('0 - Return to main menu.')
     print(' ')
 
