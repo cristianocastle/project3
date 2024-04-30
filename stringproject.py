@@ -29,11 +29,11 @@ def display_info(name):
     print(f"The name with uppercase vowels is: {modified_name}")
  
     # 8. Display the string centered between 50 '~'s, and 70 '+'s.
-    print('~' * 50 + name.center(len(name) + 100, '+') + '~' * 70)
+    print('~' * 50 + '+' * 10 + name.center(len(name)) + '+' * 60)
  
     # 9. Display the string split in half on either end of 70 '*'s.
     half_length = len(name) // 2
-    print(name[:half_length] + '*' * 70 + name[half_length:])
+    print(name[:half_length] + '*' * 35 + name[half_length:])
  
 # Input name from the user
 user_name = input("Please enter your name: ")
@@ -43,11 +43,20 @@ display_info(user_name)
  
 # Gadsby by Ernest Vincent Wright (without the letter 'e')
 gadsby_text = """
-Quote goes here
+If you stop to think of it, you will find that it is customary for our “grown-up” brain to cast
+off many of its functions of its youth; and to think only of what it calls “topics of maturity.”
+Amongst such discards is many a form of happy play; many a muscular activity such as
+walking, running, climbing; thus totally missing that alluring “joy of living” of childhood.
+If you wish a vacation from financial affairs, just go out and play with Youth. Play “blindman's buff,” “hop-scotch,” “ring toss,” and football. Go out to a charming woodland spot
+on a picnic with a bright, happy, vivacious group. Sit down at a corn roast; a marshmallow
+toast; join in singing popular songs; drink a quart of good, rich milk; burrow into that big
+lunch box; and all such things as banks, stocks, and family bills, will vanish on fairy wings,
+into oblivion.
+
 """
  
 # Remove newlines and convert to lowercase
-gadsby_text = gadsby_text.replace('\n', '').lower()
+# gadsby_text = gadsby_text.replace('\n', '').lower()
  
 # Part II - Function A
  
@@ -132,25 +141,26 @@ def is_abecedarian(word):
  
 # Test the functions
 # B
-print(remove_letter("banana", "a"))  # Output: bnn
+print(remove_letter(gadsby_text, "a"))  
 # C
 char_num(gadsby_text)
 # D
 char_occurrences(gadsby_text, 'e')
 # E
-print(no_e("hello"))  # Output: False
+print(no_e(gadsby_text))  
 # F
-print(no_character("hello", "o"))  # Output: False
+print(no_character(gadsby_text, "e"))  
 # G
-words_without_e("Hello world, how are you?")  
+words_without_e(gadsby_text)  
 # H
-print(avoids("hello", "abc"))  # Output: False
+forbidden = input("Enter forbidden letters: ")
+print(avoids(gadsby_text, forbidden))  
 # I
-print(uses_only("hello", "acefhlo"))  # Output: True
+print(uses_only(gadsby_text, "acefhlo"))  
 # J
-print(uses_all("hello", "aeiou"))  # Output: False
+print(uses_all(gadsby_text, "aeiou"))  
 # K
-print(is_abecedarian("abcde"))  # Output: True
+print(is_abecedarian("abcd"))  
  
 # L- Write a function find that takes a character and finds the index where that character
 # appears. If the character is not found, the function returns -1.
@@ -210,4 +220,4 @@ print(is_anagram("listen", "silent"))  # Output: True
 print(has_duplicates("hello"))  # Output: True
 # Q
 print(remove_duplicates("hello"))  # Output: 'helo'
- 
+
